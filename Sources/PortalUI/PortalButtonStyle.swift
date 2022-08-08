@@ -68,8 +68,8 @@ public struct PortalButtonStyle: ButtonStyle {
                 .frame(maxWidth: .infinity)
                 .frame(height: height)
                 .font(.system(size: fontSize, design: .monospaced))
-                .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1))
-                .background(backgroundColor.opacity(configuration.isPressed ? 0.8 : 1))
+                .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
+                .background(backgroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
                 .cornerRadius(cornerRadius)
                 .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
         case .outline:
@@ -77,8 +77,8 @@ public struct PortalButtonStyle: ButtonStyle {
                 .frame(maxWidth: .infinity)
                 .frame(height: height)
                 .font(.system(size: fontSize, design: .monospaced))
-                .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1))
-                .background(backgroundColor.opacity(configuration.isPressed ? 0.8 : 1))
+                .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
+                .background(backgroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
                 .overlay(
                     RoundedRectangle(cornerRadius: cornerRadius)
                         .stroke(Color.blue, lineWidth: 3)
@@ -90,7 +90,7 @@ public struct PortalButtonStyle: ButtonStyle {
                 .frame(maxWidth: .infinity)
                 .frame(height: height)
                 .font(.system(size: fontSize, design: .monospaced))
-                .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1))
+                .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
                 .background(backgroundColor)
                 .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
         }
