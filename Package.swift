@@ -24,7 +24,11 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "PortalUI",
-            dependencies: []),
+            dependencies: [],
+            resources: [
+                .copy("Assets/Assets.xcassets")
+            ]
+        ),
         .testTarget(
             name: "PortalUITests",
             dependencies: ["PortalUI"]),
