@@ -22,7 +22,7 @@ public enum Asset {
     static public let checkIcon = Image("check", bundle: .module)
     static public let chevronRightIcon = Image("chevron-right", bundle: .module)
     static public let contatcIcon = Image("contact", bundle: .module)
-    static public let galerryIcon = Image("galerry", bundle: .module)
+    static public let galeryIcon = Image("galery", bundle: .module)
     static public let gearIcon = Image("gear", bundle: .module)
     static public let helpIcon = Image("help", bundle: .module)
     static public let homeIcon = Image("home", bundle: .module)
