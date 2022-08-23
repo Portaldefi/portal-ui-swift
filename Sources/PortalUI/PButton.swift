@@ -20,9 +20,9 @@ public struct PButton: View {
     
     public enum Config {
         case onlyLabel(String),
-             onlyIcon(String),
-             labelAndIconLeft(label: String, icon: String),
-             labelAndIconRight(label: String, icon: String)
+             onlyIcon(Image),
+             labelAndIconLeft(label: String, icon: Image),
+             labelAndIconRight(label: String, icon: Image)
     }
     
     public enum Size {
@@ -69,12 +69,12 @@ public struct PButton: View {
                 Text(label)
                     .fontWeight(fontWeight)
             case .onlyIcon(let icon):
-                Image(systemName: icon)
+                icon
                     .resizable()
                     .frame(width: iconSize, height: iconSize)
             case .labelAndIconLeft(let label, let icon):
                 HStack(spacing: stackSpacing) {
-                    Image(systemName: icon)
+                    icon
                         .resizable()
                         .frame(width: iconSize, height: iconSize)
                     Text(label)
@@ -84,7 +84,7 @@ public struct PButton: View {
                 HStack(spacing: stackSpacing) {
                     Text(label)
                         .fontWeight(fontWeight)
-                    Image(systemName: icon)
+                    icon
                         .resizable()
                         .frame(width: iconSize, height: iconSize)
                 }
@@ -99,44 +99,44 @@ struct PButton_Previews_OnlyIcon: PreviewProvider {
     static var previews: some View {
         Group {
             //free
-            PButton(config: .onlyIcon("brain"), style: .free, size: .small, enabled: true, action: {})
+            PButton(config: .onlyIcon(Asset.gearIcon), style: .free, size: .small, enabled: true, action: {})
                 .previewDisplayName("Style: free, size: small, enabled: true")
                 .frame(width: 30)
             
-            PButton(config: .onlyIcon("brain"), style: .free, size: .medium, enabled: true, action: {})
+            PButton(config: .onlyIcon(Asset.gearIcon), style: .free, size: .medium, enabled: true, action: {})
                 .previewDisplayName("Style: free, size: medium, enabled: true")
                 .frame(width: 40)
             
-            PButton(config: .onlyIcon("brain"), style: .free, size: .big, enabled: true, action: {})
+            PButton(config: .onlyIcon(Asset.gearIcon), style: .free, size: .big, enabled: true, action: {})
                 .previewDisplayName("Style: free, size: big, enabled: true")
                 .frame(width: 60)
             //outline
-            PButton(config: .onlyIcon("brain"), style: .outline, size: .small, enabled: true, action: {})
+            PButton(config: .onlyIcon(Asset.gearIcon), style: .outline, size: .small, enabled: true, action: {})
                 .previewDisplayName("Style: outline, size: small, enabled: true")
                 .frame(width: 30)
                 .padding()
             
-            PButton(config: .onlyIcon("brain"), style: .outline, size: .medium, enabled: true, action: {})
+            PButton(config: .onlyIcon(Asset.gearIcon), style: .outline, size: .medium, enabled: true, action: {})
                 .previewDisplayName("Style: outline, size: medium, enabled: true")
                 .frame(width: 40)
                 .padding()
             
-            PButton(config: .onlyIcon("brain"), style: .outline, size: .big, enabled: true, action: {})
+            PButton(config: .onlyIcon(Asset.gearIcon), style: .outline, size: .big, enabled: true, action: {})
                 .previewDisplayName("Style: outline, size: big, enabled: true")
                 .frame(width: 60)
                 .padding()
             //filled
-            PButton(config: .onlyIcon("brain"), style: .filled, size: .small, enabled: true, action: {})
+            PButton(config: .onlyIcon(Asset.gearIcon), style: .filled, size: .small, enabled: true, action: {})
                 .previewDisplayName("Style: filled, size: small, enabled: true")
                 .frame(width: 30)
                 .padding()
             
-            PButton(config: .onlyIcon("brain"), style: .filled, size: .medium, enabled: true, action: {})
+            PButton(config: .onlyIcon(Asset.gearIcon), style: .filled, size: .medium, enabled: true, action: {})
                 .previewDisplayName("Style: filled, size: medium, enabled: true")
                 .frame(width: 40)
                 .padding()
             
-            PButton(config: .onlyIcon("brain"), style: .filled, size: .big, enabled: true, action: {})
+            PButton(config: .onlyIcon(Asset.gearIcon), style: .filled, size: .big, enabled: true, action: {})
                 .previewDisplayName("Style: filled, size: big, enabled: true")
                 .frame(width: 60)
                 .padding()
@@ -201,38 +201,38 @@ struct PButton_Previews_LabelAndIconLeft: PreviewProvider {
     static var previews: some View {
         Group {
             //free
-            PButton(config: .labelAndIconLeft(label: "Portal button", icon: "brain"), style: .free, size: .small, enabled: true, action: {})
+            PButton(config: .labelAndIconLeft(label: "Portal button", icon: Asset.gearIcon), style: .free, size: .small, enabled: true, action: {})
                 .previewDisplayName("Style: free, size: small, enabled: true")
                 .frame(width: 200)
-            PButton(config: .labelAndIconLeft(label: "Portal button", icon: "brain"), style: .free, size: .medium, enabled: true, action: {})
+            PButton(config: .labelAndIconLeft(label: "Portal button", icon: Asset.gearIcon), style: .free, size: .medium, enabled: true, action: {})
                 .previewDisplayName("Style: free, size: medium, enabled: true")
                 .frame(width: 200)
-            PButton(config: .labelAndIconLeft(label: "Portal button", icon: "brain"), style: .free, size: .big, enabled: true, action: {})
+            PButton(config: .labelAndIconLeft(label: "Portal button", icon: Asset.gearIcon), style: .free, size: .big, enabled: true, action: {})
                 .previewDisplayName("Style: free, size: big, enabled: true")
                 .frame(width: 250)
             //outlined
-            PButton(config: .labelAndIconLeft(label: "Portal button", icon: "brain"), style: .outline, size: .small, enabled: true, action: {})
+            PButton(config: .labelAndIconLeft(label: "Portal button", icon: Asset.gearIcon), style: .outline, size: .small, enabled: true, action: {})
                 .previewDisplayName("Style: outlined, size: small, enabled: true")
                 .frame(width: 200)
                 .padding()
-            PButton(config: .labelAndIconLeft(label: "Portal button", icon: "brain"), style: .outline, size: .medium, enabled: true, action: {})
+            PButton(config: .labelAndIconLeft(label: "Portal button", icon: Asset.gearIcon), style: .outline, size: .medium, enabled: true, action: {})
                 .previewDisplayName("Style: outlined, size: medium, enabled: true")
                 .frame(width: 200)
                 .padding()
-            PButton(config: .labelAndIconLeft(label: "Portal button", icon: "brain"), style: .outline, size: .big, enabled: true, action: {})
+            PButton(config: .labelAndIconLeft(label: "Portal button", icon: Asset.gearIcon), style: .outline, size: .big, enabled: true, action: {})
                 .previewDisplayName("Style: outlined, size: big, enabled: true")
                 .frame(width: 250)
                 .padding()
             //filled
-            PButton(config: .labelAndIconLeft(label: "Portal button", icon: "brain"), style: .filled, size: .small, enabled: true, action: {})
+            PButton(config: .labelAndIconLeft(label: "Portal button", icon: Asset.gearIcon), style: .filled, size: .small, enabled: true, action: {})
                 .previewDisplayName("Style: filled, size: small, enabled: true")
                 .frame(width: 200)
                 .padding()
-            PButton(config: .labelAndIconLeft(label: "Portal button", icon: "brain"), style: .filled, size: .medium, enabled: true, action: {})
+            PButton(config: .labelAndIconLeft(label: "Portal button", icon: Asset.gearIcon), style: .filled, size: .medium, enabled: true, action: {})
                 .previewDisplayName("Style: filled, size: medium, enabled: true")
                 .frame(width: 200)
                 .padding()
-            PButton(config: .labelAndIconLeft(label: "Portal button", icon: "brain"), style: .filled, size: .big, enabled: true, action: {})
+            PButton(config: .labelAndIconLeft(label: "Portal button", icon: Asset.gearIcon), style: .filled, size: .big, enabled: true, action: {})
                 .previewDisplayName("Style: filled, size: big, enabled: true")
                 .frame(width: 250)
                 .padding()
@@ -246,38 +246,38 @@ struct PButton_Previews_LabelAndIconRight: PreviewProvider {
     static var previews: some View {
         Group {
             //free
-            PButton(config: .labelAndIconRight(label: "Portal button", icon: "brain"), style: .free, size: .small, enabled: true, action: {})
+            PButton(config: .labelAndIconRight(label: "Portal button", icon: Asset.gearIcon), style: .free, size: .small, enabled: true, action: {})
                 .previewDisplayName("Style: free, size: small, enabled: true")
                 .frame(width: 200)
-            PButton(config: .labelAndIconRight(label: "Portal button", icon: "brain"), style: .free, size: .medium, enabled: true, action: {})
+            PButton(config: .labelAndIconRight(label: "Portal button", icon: Asset.gearIcon), style: .free, size: .medium, enabled: true, action: {})
                 .previewDisplayName("Style: free, size: medium, enabled: true")
                 .frame(width: 200)
-            PButton(config: .labelAndIconRight(label: "Portal button", icon: "brain"), style: .free, size: .big, enabled: true, action: {})
+            PButton(config: .labelAndIconRight(label: "Portal button", icon: Asset.gearIcon), style: .free, size: .big, enabled: true, action: {})
                 .previewDisplayName("Style: free, size: big, enabled: true")
                 .frame(width: 250)
             //outlined
-            PButton(config: .labelAndIconRight(label: "Portal button", icon: "brain"), style: .outline, size: .small, enabled: true, action: {})
+            PButton(config: .labelAndIconRight(label: "Portal button", icon: Asset.gearIcon), style: .outline, size: .small, enabled: true, action: {})
                 .previewDisplayName("Style: outlined, size: small, enabled: true")
                 .frame(width: 200)
                 .padding()
-            PButton(config: .labelAndIconRight(label: "Portal button", icon: "brain"), style: .outline, size: .medium, enabled: true, action: {})
+            PButton(config: .labelAndIconRight(label: "Portal button", icon: Asset.gearIcon), style: .outline, size: .medium, enabled: true, action: {})
                 .previewDisplayName("Style: outlined, size: medium, enabled: true")
                 .frame(width: 200)
                 .padding()
-            PButton(config: .labelAndIconRight(label: "Portal button", icon: "brain"), style: .outline, size: .big, enabled: true, action: {})
+            PButton(config: .labelAndIconRight(label: "Portal button", icon: Asset.gearIcon), style: .outline, size: .big, enabled: true, action: {})
                 .previewDisplayName("Style: outlined, size: big, enabled: true")
                 .frame(width: 250)
                 .padding()
             //filled
-            PButton(config: .labelAndIconRight(label: "Portal button", icon: "brain"), style: .filled, size: .small, enabled: true, action: {})
+            PButton(config: .labelAndIconRight(label: "Portal button", icon: Asset.gearIcon), style: .filled, size: .small, enabled: true, action: {})
                 .previewDisplayName("Style: filled, size: small, enabled: true")
                 .frame(width: 200)
                 .padding()
-            PButton(config: .labelAndIconRight(label: "Portal button", icon: "brain"), style: .filled, size: .medium, enabled: true, action: {})
+            PButton(config: .labelAndIconRight(label: "Portal button", icon: Asset.gearIcon), style: .filled, size: .medium, enabled: true, action: {})
                 .previewDisplayName("Style: filled, size: medium, enabled: true")
                 .frame(width: 200)
                 .padding()
-            PButton(config: .labelAndIconRight(label: "Portal button", icon: "brain"), style: .filled, size: .big, enabled: true, action: {})
+            PButton(config: .labelAndIconRight(label: "Portal button", icon: Asset.gearIcon), style: .filled, size: .big, enabled: true, action: {})
                 .previewDisplayName("Style: filled, size: big, enabled: true")
                 .frame(width: 250)
                 .padding()
