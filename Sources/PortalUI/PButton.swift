@@ -11,6 +11,7 @@ public struct PButton: View {
     private let config: Config
     private let style: Style
     private let size: Size
+    private let color: Color?
     private let enabled: Bool
     private let action: () -> Void
     
@@ -31,9 +32,13 @@ public struct PButton: View {
     
     private var iconSize: CGFloat {
         switch size {
-        case .small: return 14.67
-        case .medium: return 19.07
-        case .big: return 22
+        case .small: return 20
+        case .medium: return 26
+        case .big:
+            if case .onlyIcon = config {
+                return 40
+            }
+            return 30   
         }
     }
     
@@ -52,10 +57,11 @@ public struct PButton: View {
         }
     }
     
-    public init(config: Config, style: Style, size: Size, enabled: Bool, action: @escaping () -> Void) {
+    public init(config: Config, style: Style, size: Size, color: Color? = nil, enabled: Bool, action: @escaping () -> Void) {
         self.config = config
         self.style = style
         self.size = size
+        self.color = color
         self.enabled = enabled
         self.action = action
     }
@@ -90,7 +96,7 @@ public struct PButton: View {
                 }
             }
         }
-        .buttonStyle(PortalButtonStyle(style: style, size: size, enabled: enabled))
+        .buttonStyle(PortalButtonStyle(style: style, size: size, color: color, enabled: enabled))
         .disabled(!enabled)
     }
 }
