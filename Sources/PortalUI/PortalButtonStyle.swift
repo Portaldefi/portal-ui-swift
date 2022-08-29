@@ -42,13 +42,13 @@ public struct PortalButtonStyle: ButtonStyle {
         }
     }
     
-    private var backgroundColor: Color {
-        switch style {
-        case .filled:
-            return .blue
-        case .outline, .free:
-            return .clear
-        }
+    private var gradiendColor: LinearGradient {
+        let gradient = Gradient(colors: [
+            Color(red: 116/255, green: 138/255, blue: 254/255),
+            Color(red: 166/255, green: 78/255, blue: 255/255)
+        ])
+
+        return LinearGradient(gradient: gradient, startPoint: .top, endPoint: .bottom)
     }
     
     private var height: CGFloat {
@@ -82,7 +82,7 @@ public struct PortalButtonStyle: ButtonStyle {
                 .frame(height: height)
                 .font(.system(size: fontSize, design: .monospaced))
                 .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
-                .background(backgroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
+                .background(gradiendColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
                 .cornerRadius(cornerRadius)
                 .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
         case .outline:
@@ -91,10 +91,9 @@ public struct PortalButtonStyle: ButtonStyle {
                 .frame(height: height)
                 .font(.system(size: fontSize, design: .monospaced))
                 .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
-                .background(backgroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
                 .overlay(
                     RoundedRectangle(cornerRadius: cornerRadius)
-                        .stroke(Color.blue, lineWidth: 3)
+                        .stroke(gradiendColor, lineWidth: 3)
                         .opacity(configuration.isPressed ? 0.8 : 1)
                 )
                 .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
@@ -104,7 +103,6 @@ public struct PortalButtonStyle: ButtonStyle {
                 .frame(height: height)
                 .font(.system(size: fontSize, design: .monospaced))
                 .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
-                .background(backgroundColor)
                 .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
         }
     }
