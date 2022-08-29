@@ -8,9 +8,10 @@
 import SwiftUI
 
 public struct PortalButtonStyle: ButtonStyle {
-    let style: PButton.Style
-    let size: PButton.Size
-    let enabled: Bool
+    private let style: PButton.Style
+    private let size: PButton.Size
+    private let color: Color?
+    private let enabled: Bool
     
     private var padding: CGFloat {
         switch size {
@@ -31,7 +32,12 @@ public struct PortalButtonStyle: ButtonStyle {
         switch style {
         case .filled:
             return Color(red: 10/255, green: 10/255, blue: 10/255, opacity: 1)
-        case .outline, .free:
+        case .outline:
+            return Color(red: 234/255, green: 234/255, blue: 234/255, opacity: 1)
+        case .free:
+            if let color = color {
+                return color
+            }
             return Color(red: 234/255, green: 234/255, blue: 234/255, opacity: 1)
         }
     }
@@ -59,6 +65,13 @@ public struct PortalButtonStyle: ButtonStyle {
         case .medium: return 12
         case .big: return 16
         }
+    }
+    
+    public init(style: PButton.Style, size: PButton.Size, color: Color?, enabled: Bool) {
+        self.style = style
+        self.size = size
+        self.color = color
+        self.enabled = enabled
     }
         
     public func makeBody(configuration: Self.Configuration) -> some View {
