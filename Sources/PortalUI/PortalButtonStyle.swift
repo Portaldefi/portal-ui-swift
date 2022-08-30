@@ -42,13 +42,16 @@ public struct PortalButtonStyle: ButtonStyle {
         }
     }
     
-    private var gradiendColor: LinearGradient {
-        let gradient = Gradient(colors: [
-            Color(red: 116/255, green: 138/255, blue: 254/255),
-            Color(red: 166/255, green: 78/255, blue: 255/255)
-        ])
-
-        return LinearGradient(gradient: gradient, startPoint: .top, endPoint: .bottom)
+    private var gradiendColor: RadialGradient {
+        RadialGradient(
+            colors: [
+                Color(red: 116/255, green: 138/255, blue: 254/255),
+                Color(red: 166/255, green: 78/255, blue: 255/255)
+            ],
+            center: .center,
+            startRadius: 0,
+            endRadius: 270
+        )
     }
     
     private var height: CGFloat {
