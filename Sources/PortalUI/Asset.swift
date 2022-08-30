@@ -44,4 +44,5 @@ public enum Asset {
     static public let scanQRIcon = Image("scan-qr", bundle: .module)
     static public let sendButtonIcon = Image("send-button-icon", bundle: .module)
     static public let receiveButtonIcon = Image("receive-button-icon", bundle: .module)
+    static public let portalLogo = Image("portal-icon", bundle: .module)
 }
