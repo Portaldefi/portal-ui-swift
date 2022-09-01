@@ -57,7 +57,14 @@ public struct PButton: View {
         }
     }
     
-    public init(config: Config, style: Style, size: Size, color: Color? = nil, enabled: Bool, action: @escaping () -> Void) {
+    public init(
+        config: Config,
+        style: Style,
+        size: Size,
+        color: Color? = nil,
+        enabled: Bool,
+        action: @escaping () -> Void
+    ) {
         self.config = config
         self.style = style
         self.size = size
