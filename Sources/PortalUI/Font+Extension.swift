@@ -21,7 +21,7 @@ extension Font {
     }
 }
 
-struct MainFont_Previews: PreviewProvider {
+struct MainFont_RelativeToBody_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             Text("NotoSansMono-Thin")
@@ -66,6 +66,59 @@ struct MainFont_Previews: PreviewProvider {
             
             Text("NotoSansMono-Black")
                 .font(.Main.relative(.black, size: 28, relativeTo: .body))
+                .foregroundColor(.white)
+                .padding()
+        }
+        .previewLayout(PreviewLayout.sizeThatFits)
+        .background(Color(red: 58/255, green: 58/255, blue: 58/255, opacity: 1))
+    }
+}
+
+struct MainFont_Fixed_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            Text("NotoSansMono-Thin")
+                .font(.Main.fixed(.thin, size: 28))
+                .foregroundColor(.white)
+                .padding()
+            
+            Text("NotoSansMono-Light")
+                .font(.Main.fixed(.light, size: 28))
+                .foregroundColor(.white)
+                .padding()
+            
+            Text("NotoSansMono-ExtraLight")
+                .font(.Main.fixed(.extraLight, size: 28))
+                .foregroundColor(.white)
+                .padding()
+            
+            Text("NotoSansMono-Regular")
+                .font(.Main.fixed(.regular, size: 28))
+                .foregroundColor(.white)
+                .padding()
+            
+            Text("NotoSansMono-Medium")
+                .font(.Main.fixed(.medium, size: 28))
+                .foregroundColor(.white)
+                .padding()
+            
+            Text("NotoSansMono-SemiBold")
+                .font(.Main.fixed(.semiBold, size: 28))
+                .foregroundColor(.white)
+                .padding()
+            
+            Text("NotoSansMono-Bold")
+                .font(.Main.fixed(.bold, size: 28))
+                .foregroundColor(.white)
+                .padding()
+            
+            Text("NotoSansMono-ExtraBold")
+                .font(.Main.fixed(.extraBold, size: 28))
+                .foregroundColor(.white)
+                .padding()
+            
+            Text("NotoSansMono-Black")
+                .font(.Main.fixed(.black, size: 28))
                 .foregroundColor(.white)
                 .padding()
         }
