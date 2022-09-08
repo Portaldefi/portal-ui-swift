@@ -83,7 +83,7 @@ public struct PortalButtonStyle: ButtonStyle {
             configuration.label
                 .frame(maxWidth: .infinity)
                 .frame(height: height)
-                .font(.system(size: fontSize, design: .monospaced))
+                .font(.Main.fixed(.bold, size: fontSize))
                 .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
                 .background(gradiendColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
                 .cornerRadius(cornerRadius)
@@ -92,7 +92,7 @@ public struct PortalButtonStyle: ButtonStyle {
             configuration.label
                 .frame(maxWidth: .infinity)
                 .frame(height: height)
-                .font(.system(size: fontSize, design: .monospaced))
+                .font(.Main.fixed(.bold, size: fontSize))
                 .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
                 .overlay(
                     RoundedRectangle(cornerRadius: cornerRadius)
@@ -104,7 +104,7 @@ public struct PortalButtonStyle: ButtonStyle {
             configuration.label
                 .frame(maxWidth: .infinity)
                 .frame(height: height)
-                .font(.system(size: fontSize, design: .monospaced))
+                .font(.Main.fixed(.bold, size: fontSize))
                 .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
                 .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
         }
