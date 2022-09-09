@@ -45,4 +45,9 @@ public enum Asset {
     static public let sendButtonIcon = Image("send-button-icon", bundle: .module)
     static public let receiveButtonIcon = Image("receive-button-icon", bundle: .module)
     static public let portalLogo = Image("portal-icon", bundle: .module)
+    //Network icons
+    static public let btcIcon = Image("bitcoin-icon", bundle: .module)
+    static public let ethIcon = Image("ethereum-icon", bundle: .module)
+    static public let lightningIconColor = Image("lightning-icon", bundle: .module)
+    static public let lightningRounded = Image("lightning-rounded-icon", bundle: .module)
 }
