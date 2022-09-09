@@ -21,6 +21,7 @@ public enum Asset {
     static public let chainIcon = Image("chain", bundle: .module)
     static public let checkIcon = Image("check", bundle: .module)
     static public let chevronRightIcon = Image("chevron-right", bundle: .module)
+    static public let chevronLeftIcon = Image("chevron-left", bundle: .module)
     static public let contatcIcon = Image("contact", bundle: .module)
     static public let galeryIcon = Image("galery", bundle: .module)
     static public let gearIcon = Image("gear", bundle: .module)
@@ -45,6 +46,8 @@ public enum Asset {
     static public let sendButtonIcon = Image("send-button-icon", bundle: .module)
     static public let receiveButtonIcon = Image("receive-button-icon", bundle: .module)
     static public let portalLogo = Image("portal-icon", bundle: .module)
+    static public let txSentIcon = Image("tx-sent-icon", bundle: .module)
+    static public let txReceivedIcon = Image("tx-received-icon", bundle: .module)
     //Network icons
     static public let btcIcon = Image("bitcoin-icon", bundle: .module)
     static public let ethIcon = Image("ethereum-icon", bundle: .module)
