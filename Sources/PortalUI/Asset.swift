@@ -49,6 +49,8 @@ public enum Asset {
     static public let portalQrIcon = Image("portal-qr-icon", bundle: .module)
     static public let txSentIcon = Image("tx-sent-icon", bundle: .module)
     static public let txReceivedIcon = Image("tx-received-icon", bundle: .module)
+    static public let copyIcon = Image("copy-icon", bundle: .module)
+    static public let pasteIcon = Image("paste-icon", bundle: .module)
     //Network icons
     static public let btcIcon = Image("bitcoin-icon", bundle: .module)
     static public let ethIcon = Image("ethereum-icon", bundle: .module)
