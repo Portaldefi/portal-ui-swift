@@ -54,6 +54,18 @@ public struct PortalButtonStyle: ButtonStyle {
         )
     }
     
+    private var buttonsGradiendColor: RadialGradient {
+        RadialGradient(
+            colors: [
+                Palette.gradientLeadingColor,
+                Palette.gradientTrailingColor
+            ],
+            center: .bottomTrailing,
+            startRadius: 180,
+            endRadius: 270
+        )
+    }
+    
     private var height: CGFloat {
         switch size {
         case .small: return 30
@@ -96,7 +108,7 @@ public struct PortalButtonStyle: ButtonStyle {
                 .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
                 .overlay(
                     RoundedRectangle(cornerRadius: cornerRadius)
-                        .stroke(gradiendColor, lineWidth: 3)
+                        .stroke(gradiendColor, lineWidth: 2)
                         .opacity(configuration.isPressed ? 0.8 : 1)
                 )
                 .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
