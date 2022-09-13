@@ -42,30 +42,6 @@ public struct PortalButtonStyle: ButtonStyle {
         }
     }
     
-    private var gradiendColor: RadialGradient {
-        RadialGradient(
-            colors: [
-                Palette.gradientLeadingColor,
-                Palette.gradientTrailingColor
-            ],
-            center: .bottomTrailing,
-            startRadius: 0,
-            endRadius: 270
-        )
-    }
-    
-    private var buttonsGradiendColor: RadialGradient {
-        RadialGradient(
-            colors: [
-                Palette.gradientLeadingColor,
-                Palette.gradientTrailingColor
-            ],
-            center: .bottomTrailing,
-            startRadius: 180,
-            endRadius: 270
-        )
-    }
-    
     private var height: CGFloat {
         switch size {
         case .small: return 30
@@ -97,7 +73,7 @@ public struct PortalButtonStyle: ButtonStyle {
                 .frame(height: height)
                 .font(.Main.fixed(.bold, size: fontSize))
                 .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
-                .background(gradiendColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
+                .background(RadialGradient.main.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
                 .cornerRadius(cornerRadius)
                 .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
         case .outline:
@@ -108,7 +84,7 @@ public struct PortalButtonStyle: ButtonStyle {
                 .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
                 .overlay(
                     RoundedRectangle(cornerRadius: cornerRadius)
-                        .stroke(gradiendColor, lineWidth: 2)
+                        .stroke(RadialGradient.main, lineWidth: 2)
                         .opacity(configuration.isPressed ? 0.8 : 1)
                 )
                 .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
