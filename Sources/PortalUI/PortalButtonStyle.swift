@@ -31,17 +31,17 @@ public struct PortalButtonStyle: ButtonStyle {
     private var foregroundColor: Color {
         switch style {
         case .filled:
-            return Color(red: 10/255, green: 10/255, blue: 10/255, opacity: 1)
+            return Palette.grayScale0A
         case .outline:
-            return Color(red: 234/255, green: 234/255, blue: 234/255, opacity: 1)
+            return Palette.grayScaleEA
         case .free:
             if let color = color {
                 return color
             }
-            return Color(red: 234/255, green: 234/255, blue: 234/255, opacity: 1)
+            return Palette.grayScaleEA
         }
     }
-    
+        
     private var height: CGFloat {
         switch size {
         case .small: return 30
@@ -72,8 +72,12 @@ public struct PortalButtonStyle: ButtonStyle {
                 .frame(maxWidth: .infinity)
                 .frame(height: height)
                 .font(.Main.fixed(.bold, size: fontSize))
-                .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
-                .background(RadialGradient.main.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
+                .if(enabled, then: {
+                    $0.background(RadialGradient.main.opacity(configuration.isPressed ? 0.8 : 1))
+                }, else: {
+                    $0.background(Palette.grayScaleEA.opacity(0.2))
+                })
+                .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.8))
                 .cornerRadius(cornerRadius)
                 .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
         case .outline:
@@ -81,19 +85,23 @@ public struct PortalButtonStyle: ButtonStyle {
                 .frame(maxWidth: .infinity)
                 .frame(height: height)
                 .font(.Main.fixed(.bold, size: fontSize))
-                .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
-                .overlay(
-                    RoundedRectangle(cornerRadius: cornerRadius)
-                        .stroke(RadialGradient.main, lineWidth: 2)
-                        .opacity(configuration.isPressed ? 0.8 : 1)
-                )
+                .if(enabled, then: {
+                    $0.background(
+                        RoundedRectangle(cornerRadius: cornerRadius)
+                            .stroke(RadialGradient.main, lineWidth: 2)
+                            .opacity(configuration.isPressed ? 0.8 : 1)
+                    )
+                }, else: {
+                    $0.background(Palette.grayScaleEA.opacity(0.2))
+                })
+                .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.2))
                 .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
         case .free:
             configuration.label
                 .frame(maxWidth: .infinity)
                 .frame(height: height)
                 .font(.Main.fixed(.bold, size: fontSize))
-                .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.6))
+                .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.2))
                 .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
         }
     }
