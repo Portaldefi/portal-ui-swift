@@ -71,7 +71,7 @@ public struct PortalButtonStyle: ButtonStyle {
             configuration.label
                 .frame(maxWidth: .infinity)
                 .frame(height: height)
-                .font(.Main.fixed(.bold, size: fontSize))
+                .font(.Main.fixed(.monoBold, size: fontSize))
                 .if(enabled, then: {
                     $0.background(RadialGradient.main.opacity(configuration.isPressed ? 0.8 : 1))
                 }, else: {
@@ -84,7 +84,7 @@ public struct PortalButtonStyle: ButtonStyle {
             configuration.label
                 .frame(maxWidth: .infinity)
                 .frame(height: height)
-                .font(.Main.fixed(.bold, size: fontSize))
+                .font(.Main.fixed(.monoBold, size: fontSize))
                 .if(enabled, then: {
                     $0.background(
                         RoundedRectangle(cornerRadius: cornerRadius)
@@ -100,7 +100,7 @@ public struct PortalButtonStyle: ButtonStyle {
             configuration.label
                 .frame(maxWidth: .infinity)
                 .frame(height: height)
-                .font(.Main.fixed(.bold, size: fontSize))
+                .font(.Main.fixed(.monoBold, size: fontSize))
                 .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.2))
                 .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
         }
