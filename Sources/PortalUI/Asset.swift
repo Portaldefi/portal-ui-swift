@@ -56,4 +56,7 @@ public enum Asset {
     static public let ethIcon = Image("ethereum-icon", bundle: .module)
     static public let lightningIconColor = Image("lightning-icon", bundle: .module)
     static public let lightningRounded = Image("lightning-rounded-icon", bundle: .module)
+    
+    static public let explorerIcon = Image("explorer-icon", bundle: .module)
+
 }
