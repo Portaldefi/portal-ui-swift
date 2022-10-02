@@ -7,9 +7,30 @@
 
 import SwiftUI
 
+struct GradientMask: ViewModifier {
+    let apply: Bool
+    
+    func body(content: Content) -> some View {
+        if apply {
+            RadialGradient.main.mask {
+                content
+            }
+        } else {
+            content
+        }
+    }
+}
+
+extension View {
+    func applyGradientMask(_ apply: Bool) -> some View {
+        modifier(GradientMask(apply: apply))
+    }
+}
+
 public struct PButton: View {
     private let config: Config
     private let style: Style
+    private let applyGradient: Bool
     private let size: Size
     private let color: Color?
     private let enabled: Bool
@@ -42,18 +63,22 @@ public struct PButton: View {
         }
     }
     
-    private var fontWeight: Font.Weight {
+    private var font: Font {
         switch size {
-        case .small, .medium: return .semibold
-        case .big: return .bold
+        case .small:
+            return .Main.fixed(.monoBold, size: 16)
+        case .medium:
+            return .Main.fixed(.monoBold, size: 18)
+        case .big:
+            return .Main.fixed(.monoBold, size: 20)
         }
     }
     
     private var stackSpacing: CGFloat {
         switch size {
-        case .small: return 8.67
-        case .medium: return 9.74
-        case .big: return 10
+        case .small: return 6
+        case .medium: return 6
+        case .big: return 6
         }
     }
     
@@ -62,6 +87,7 @@ public struct PButton: View {
         style: Style,
         size: Size,
         color: Color? = nil,
+        applyGradient: Bool = false,
         enabled: Bool,
         action: @escaping () -> Void
     ) {
@@ -69,6 +95,7 @@ public struct PButton: View {
         self.style = style
         self.size = size
         self.color = color
+        self.applyGradient = applyGradient
         self.enabled = enabled
         self.action = action
     }
@@ -77,31 +104,34 @@ public struct PButton: View {
         Button(action: {
             action()
         }) {
-            switch config {
-            case .onlyLabel(let label):
-                Text(label)
-                    .fontWeight(fontWeight)
-            case .onlyIcon(let icon):
-                icon
-                    .resizable()
-                    .frame(width: iconSize, height: iconSize)
-            case .labelAndIconLeft(let label, let icon):
-                HStack(spacing: stackSpacing) {
+            Group {
+                switch config {
+                case .onlyLabel(let label):
+                    Text(label)
+                        .font(font)
+                case .onlyIcon(let icon):
                     icon
                         .resizable()
                         .frame(width: iconSize, height: iconSize)
-                    Text(label)
-                        .fontWeight(fontWeight)
-                }
-            case .labelAndIconRight(let label, let icon):
-                HStack(spacing: stackSpacing) {
-                    Text(label)
-                        .fontWeight(fontWeight)
-                    icon
-                        .resizable()
-                        .frame(width: iconSize, height: iconSize)
+                case .labelAndIconLeft(let label, let icon):
+                    HStack(spacing: stackSpacing) {
+                        icon
+                            .resizable()
+                            .frame(width: iconSize, height: iconSize)
+                        Text(label)
+                            .font(font)
+                    }
+                case .labelAndIconRight(let label, let icon):
+                    HStack(spacing: stackSpacing) {
+                        Text(label)
+                            .font(font)
+                        icon
+                            .resizable()
+                            .frame(width: iconSize, height: iconSize)
+                    }
                 }
             }
+            .applyGradientMask(applyGradient)
         }
         .buttonStyle(PortalButtonStyle(style: style, size: size, color: color, enabled: enabled))
         .disabled(!enabled)
