@@ -9,12 +9,14 @@ import SwiftUI
 
 struct GradientMask: ViewModifier {
     let apply: Bool
+    let enabled: Bool
     
     func body(content: Content) -> some View {
         if apply {
             RadialGradient.main.mask {
                 content
             }
+            .opacity(enabled ? 1 : 0.35)
         } else {
             content
         }
@@ -22,8 +24,8 @@ struct GradientMask: ViewModifier {
 }
 
 extension View {
-    func applyGradientMask(_ apply: Bool) -> some View {
-        modifier(GradientMask(apply: apply))
+    func applyGradientMask(_ apply: Bool, enabled: Bool) -> some View {
+        modifier(GradientMask(apply: apply, enabled: enabled))
     }
 }
 
@@ -131,7 +133,7 @@ public struct PButton: View {
                     }
                 }
             }
-            .applyGradientMask(applyGradient)
+            .applyGradientMask(applyGradient, enabled: enabled)
         }
         .buttonStyle(PortalButtonStyle(style: style, size: size, color: color, enabled: enabled))
         .disabled(!enabled)
