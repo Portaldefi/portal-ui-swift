@@ -16,7 +16,7 @@ struct GradientMask: ViewModifier {
             RadialGradient.main.mask {
                 content
             }
-            .opacity(enabled ? 1 : 0.35)
+//            .opacity(enabled ? 1 : 0.35)
         } else {
             content
         }

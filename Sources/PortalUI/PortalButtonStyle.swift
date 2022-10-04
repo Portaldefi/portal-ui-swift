@@ -73,13 +73,14 @@ public struct PortalButtonStyle: ButtonStyle {
                 .frame(height: height)
                 .font(.Main.fixed(.monoBold, size: fontSize))
                 .if(enabled, then: {
-                    $0.background(RadialGradient.main.opacity(configuration.isPressed ? 0.8 : 1))
+                    $0.background(RadialGradient.main)
                 }, else: {
                     $0.background(Palette.grayScaleEA.opacity(0.2))
                 })
-                .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.8))
+                .foregroundColor(foregroundColor)
                 .cornerRadius(cornerRadius)
                 .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
+                .opacity(configuration.isPressed ? 0.8 : 1.0)
         case .outline:
             configuration.label
                 .frame(maxWidth: .infinity)
@@ -89,20 +90,21 @@ public struct PortalButtonStyle: ButtonStyle {
                     $0.background(
                         RoundedRectangle(cornerRadius: cornerRadius)
                             .stroke(RadialGradient.main, lineWidth: 2)
-                            .opacity(configuration.isPressed ? 0.8 : 1)
                     )
                 }, else: {
                     $0.background(Palette.grayScaleEA.opacity(0.2))
                 })
-                .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.2))
+                .foregroundColor(foregroundColor)
                 .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
+                .opacity(configuration.isPressed ? 0.8 : 1.0)
         case .free:
             configuration.label
                 .frame(maxWidth: .infinity)
                 .frame(height: height)
                 .font(.Main.fixed(.monoBold, size: fontSize))
-                .foregroundColor(foregroundColor.opacity(configuration.isPressed ? 0.8 : 1).opacity(enabled ? 1 : 0.2))
+                .foregroundColor(foregroundColor)
                 .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
+                .opacity(configuration.isPressed ? 0.8 : 1.0)
         }
     }
 }
