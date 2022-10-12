@@ -79,8 +79,8 @@ public struct PortalButtonStyle: ButtonStyle {
                 })
                 .foregroundColor(foregroundColor)
                 .cornerRadius(cornerRadius)
-                .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
-                .opacity(configuration.isPressed ? 0.8 : 1.0)
+                .scaleEffect(configuration.isPressed ? 0.96 : 1.0)
+                .opacity(configuration.isPressed ? 0.7 : 1.0)
         case .outline:
             configuration.label
                 .frame(maxWidth: .infinity)
@@ -95,16 +95,16 @@ public struct PortalButtonStyle: ButtonStyle {
                     $0.background(Palette.grayScaleEA.opacity(0.2))
                 })
                 .foregroundColor(foregroundColor)
-                .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
-                .opacity(configuration.isPressed ? 0.8 : 1.0)
+                .scaleEffect(configuration.isPressed ? 0.96 : 1.0)
+                .opacity(configuration.isPressed ? 0.7 : 1.0)
         case .free:
             configuration.label
                 .frame(maxWidth: .infinity)
                 .frame(height: height)
                 .font(.Main.fixed(.monoBold, size: fontSize))
                 .foregroundColor(foregroundColor)
-                .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
-                .opacity(configuration.isPressed ? 0.8 : 1.0)
+                .scaleEffect(configuration.isPressed ? 0.96 : 1.0)
+                .opacity(configuration.isPressed ? 0.7 : 1.0)
         }
     }
 }
