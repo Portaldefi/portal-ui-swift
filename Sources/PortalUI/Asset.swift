@@ -13,7 +13,7 @@ public enum Asset {
     static public let arrowLeftIcon = Image("arrow-left", bundle: .module)
     static public let arrowRightIcon = Image("arrow-right", bundle: .module)
     static public let arrowUpIcon = Image("arrow-up", bundle: .module)
-    static public let arrowUprightIcon = Image("arrow-urpight", bundle: .module)
+    static public let arrowUprightIcon = Image("arrow-upright", bundle: .module)
     static public let caretDownIcon = Image("caret-down", bundle: .module)
     static public let caretLeftIcon = Image("caret-left", bundle: .module)
     static public let caretRightIcon = Image("caret-right", bundle: .module)
