@@ -105,6 +105,7 @@ public struct PortalButtonStyle: ButtonStyle {
                 .foregroundColor(foregroundColor)
                 .scaleEffect(configuration.isPressed ? 0.96 : 1.0)
                 .opacity(configuration.isPressed ? 0.7 : 1.0)
+                .opacity(enabled ? 1 : 0.7)
         }
     }
 }
