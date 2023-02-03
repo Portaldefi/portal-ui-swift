@@ -50,7 +50,7 @@ public struct PButton: View {
     }
     
     public enum Size {
-        case small, medium, big
+        case small, medium, big, custom(_ config: PButtonConfig)
     }
     
     private var iconSize: CGFloat {
@@ -61,7 +61,9 @@ public struct PButton: View {
             if case .onlyIcon = config {
                 return 40
             }
-            return 30   
+            return 30
+        case .custom(let config):
+            return config.iconSize
         }
     }
     
@@ -73,6 +75,8 @@ public struct PButton: View {
             return .Main.fixed(.monoBold, size: 18)
         case .big:
             return .Main.fixed(.monoBold, size: 20)
+        case .custom(let config):
+            return .Main.fixed(.monoBold, size: config.fontSize)
         }
     }
     
@@ -81,6 +85,8 @@ public struct PButton: View {
         case .small: return 6
         case .medium: return 6
         case .big: return 6
+        case .custom(let config):
+            return config.spacing
         }
     }
     
@@ -101,6 +107,13 @@ public struct PButton: View {
         self.enabled = enabled
         self.action = action
     }
+    
+    var isCustomSize: Bool {
+        if case .custom(_) = size {
+            return true
+        }
+        return false
+    }
             
     public var body: some View {
         Button(action: {
@@ -120,6 +133,9 @@ public struct PButton: View {
                         icon
                             .resizable()
                             .frame(width: iconSize, height: iconSize)
+                            .if(isCustomSize) { view in
+                                view.foregroundColor(.gray)
+                            }
                         Text(label)
                             .font(font)
                     }

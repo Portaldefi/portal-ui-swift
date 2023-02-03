@@ -18,6 +18,8 @@ public struct PortalButtonStyle: ButtonStyle {
         case .small: return 4
         case .medium: return 8
         case .big: return 12
+        case .custom(let config):
+            return config.spacing
         }
     }
     
@@ -25,6 +27,8 @@ public struct PortalButtonStyle: ButtonStyle {
         switch size {
         case .small, .medium: return 16
         case .big: return 22
+        case .custom(let config):
+            return config.fontSize
         }
     }
     
@@ -47,6 +51,8 @@ public struct PortalButtonStyle: ButtonStyle {
         case .small: return 30
         case .medium: return 40
         case .big: return 60
+        case .custom(let config):
+            return config.height
         }
     }
     
@@ -55,6 +61,8 @@ public struct PortalButtonStyle: ButtonStyle {
         case .small: return 10
         case .medium: return 12
         case .big: return 16
+        case .custom(let config):
+            return config.cornerRadius
         }
     }
     
