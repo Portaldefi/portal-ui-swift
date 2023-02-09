@@ -69,10 +69,8 @@ public struct PButton: View {
     
     private var font: Font {
         switch size {
-        case .small:
+        case .small, .medium:
             return .Main.fixed(.monoBold, size: 16)
-        case .medium:
-            return .Main.fixed(.monoBold, size: 18)
         case .big:
             return .Main.fixed(.monoBold, size: 20)
         case .custom(let config):
