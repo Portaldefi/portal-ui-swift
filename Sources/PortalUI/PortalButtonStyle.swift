@@ -35,9 +35,9 @@ public struct PortalButtonStyle: ButtonStyle {
     private var foregroundColor: Color {
         switch style {
         case .filled:
-            return Palette.grayScale0A
+            return color ?? Palette.grayScale0A
         case .outline:
-            return Palette.grayScaleEA
+            return color ?? Palette.grayScaleEA
         case .free:
             if let color = color {
                 return color
