@@ -37,6 +37,7 @@ public enum Asset {
     static public let searchIcon = Image("search", bundle: .module)
     static public let sendIcon = Image("send", bundle: .module)
     static public let swapIcon = Image("swap", bundle: .module)
+    static public let txSwapIcon = Image("tx-swap-icon", bundle: .module)
     static public let switchIcon = Image("switch", bundle: .module)
     static public let tagIcon = Image("tag", bundle: .module)
     static public let threeDotsIcon = Image("three-dots", bundle: .module)
