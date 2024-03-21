@@ -16,7 +16,6 @@ struct GradientMask: ViewModifier {
             RadialGradient.main.mask {
                 content
             }
-//            .opacity(enabled ? 1 : 0.35)
         } else {
             content
         }
@@ -131,9 +130,6 @@ public struct PButton: View {
                         icon
                             .resizable()
                             .frame(width: iconSize, height: iconSize)
-                            .if(isCustomSize) { view in
-                                view.foregroundColor(.white)
-                            }
                         Text(label)
                             .font(font)
                     }
