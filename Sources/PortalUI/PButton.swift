@@ -130,6 +130,9 @@ public struct PButton: View {
                         icon
                             .resizable()
                             .frame(width: iconSize, height: iconSize)
+                            .if(isCustomSize) { view in
+                                view.foregroundColor(Palette.grayScale6A)
+                            }
                         Text(label)
                             .font(font)
                     }
