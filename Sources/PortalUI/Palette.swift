@@ -8,6 +8,7 @@
 import SwiftUI
 
 public enum Palette {
+    static public let accent = Color("accent", bundle: .module)
     static public let gradientLeadingColor = Color("gradient-1", bundle: .module)
     static public let gradientTrailingColor = Color("gradient-2", bundle: .module)
     static public let grayScaleF4 = Color("gray-1", bundle: .module)
