@@ -13,7 +13,7 @@ struct GradientMask: ViewModifier {
     
     func body(content: Content) -> some View {
         if apply {
-            RadialGradient.main.mask {
+            EllipticalGradient.main.mask {
                 content
             }
         } else {
@@ -105,9 +105,9 @@ public struct PButton: View {
         self.action = action
     }
     
-    var isCustomSize: Bool {
-        if case .custom(_) = size {
-            return true
+    var isGrayIcon: Bool {
+        if case .custom(let config) = size {
+            return config.grayIcon
         }
         return false
     }
@@ -130,7 +130,7 @@ public struct PButton: View {
                         icon
                             .resizable()
                             .frame(width: iconSize, height: iconSize)
-                            .if(isCustomSize) { view in
+                            .if(isGrayIcon) { view in
                                 view.foregroundColor(Palette.grayScale6A)
                             }
                         Text(label)

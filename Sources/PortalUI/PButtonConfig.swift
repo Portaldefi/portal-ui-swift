@@ -13,12 +13,14 @@ public struct PButtonConfig: Equatable {
     let height: CGFloat
     let cornerRadius: CGFloat
     let iconSize: CGFloat
+    let grayIcon: Bool
     
-    public init(fontSize: CGFloat, spacing: CGFloat, height: CGFloat, cornerRadius: CGFloat, iconSize: CGFloat) {
+    public init(fontSize: CGFloat, spacing: CGFloat, height: CGFloat, cornerRadius: CGFloat, iconSize: CGFloat, grayIcon: Bool) {
         self.fontSize = fontSize
         self.spacing = spacing
         self.height = height
         self.cornerRadius = cornerRadius
         self.iconSize = iconSize
+        self.grayIcon = grayIcon
     }
 }

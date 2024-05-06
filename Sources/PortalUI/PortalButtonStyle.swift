@@ -81,7 +81,7 @@ public struct PortalButtonStyle: ButtonStyle {
                 .frame(height: height)
                 .font(.Main.fixed(.monoBold, size: fontSize))
                 .if(enabled, then: {
-                    $0.background(RadialGradient.main)
+                    $0.background(EllipticalGradient.main)
                 }, else: {
                     $0.background(Palette.grayScaleEA.opacity(0.2))
                 })
@@ -94,14 +94,11 @@ public struct PortalButtonStyle: ButtonStyle {
                 .frame(maxWidth: .infinity)
                 .frame(height: height)
                 .font(.Main.fixed(.monoBold, size: fontSize))
-                .if(enabled, then: {
-                    $0.background(
-                        RoundedRectangle(cornerRadius: cornerRadius)
-                            .stroke(RadialGradient.main, lineWidth: 2)
-                    )
-                }, else: {
-                    $0.background(Palette.grayScaleEA.opacity(0.2))
-                })
+                .background(
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .stroke(EllipticalGradient.main, lineWidth: 2)
+                )
+                .opacity(enabled ? 1 : 0.55)
                 .foregroundColor(foregroundColor)
                 .scaleEffect(configuration.isPressed ? 0.96 : 1.0)
                 .opacity(configuration.isPressed ? 0.7 : 1.0)
