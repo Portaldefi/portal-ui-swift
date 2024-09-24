@@ -19,6 +19,18 @@ extension Font {
             Font.custom(style.name, size: size, relativeTo: textStyle)
         }
     }
+    
+    public struct ClashDisplay {
+        /// Returns a fixed-size font of the specified style.
+        public static func fixed(_ style: ClashDisplayStyle, size: CGFloat) -> Font {
+            Font.custom(style.name, fixedSize: size)
+        }
+        
+        /// Returns a relative-size font of the specified style.
+        public static func relative(_ style: ClashDisplayStyle, size: CGFloat, relativeTo textStyle: Font.TextStyle) -> Font {
+            Font.custom(style.name, size: size, relativeTo: textStyle)
+        }
+    }
 }
 
 struct MainFont_RelativeToBody_Previews: PreviewProvider {
