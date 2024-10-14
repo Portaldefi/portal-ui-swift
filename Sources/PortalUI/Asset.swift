@@ -66,5 +66,6 @@ public enum Asset {
     static public let flashSlashIcon = Image("flash-slash-icon", bundle: .module)
     
     static public let menuIcon = Image("menu-icon", bundle: .module)
+    static public let loadingAnimationFrames = (0...59).compactMap { Image("loading-frame_\($0)", bundle: .module) }
 
 }
