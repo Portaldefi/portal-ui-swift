@@ -56,10 +56,14 @@ public enum Asset {
     static public let portalBetaIcon = Image("portal-beta-icon", bundle: .module)
     static public let portalIconDark = Image("portal-icon-dark", bundle: .module)
     static public let rafaIcon = Image("rafa-icon", bundle: .module)
+    static public let moneyIcon = Image("money-icon", bundle: .module)
+    static public let gasIcon = Image("gas-icon", bundle: .module)
+    static public let bridgeIcon = Image("bridge-icon", bundle: .module)
 
     //Network icons
     static public let btcIcon = Image("bitcoin-icon", bundle: .module)
     static public let ethIcon = Image("ethereum-icon", bundle: .module)
+    static public let solIcon = Image("solana-icon", bundle: .module)
     static public let lightningIconColor = Image("lightning-icon", bundle: .module)
     static public let lightningRounded = Image("lightning-rounded-icon", bundle: .module)
     
