@@ -96,7 +96,11 @@ public struct PortalButtonStyle: ButtonStyle {
                 .font(.Main.fixed(.monoBold, size: fontSize))
                 .background(
                     RoundedRectangle(cornerRadius: cornerRadius)
-                        .stroke(EllipticalGradient.main, lineWidth: 2)
+                        .fill(Palette.grayScale20)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: cornerRadius)
+                                .stroke(Palette.grayScale2A, lineWidth: 2)
+                        )
                 )
                 .opacity(enabled ? 1 : 0.55)
                 .foregroundColor(foregroundColor)

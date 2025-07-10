@@ -45,7 +45,8 @@ public struct PButton: View {
         case onlyLabel(String),
              onlyIcon(Image),
              labelAndIconLeft(label: String, icon: Image),
-             labelAndIconRight(label: String, icon: Image)
+             labelAndIconRight(label: String, icon: Image),
+             vertical(label: String, icon: Image)
     }
     
     public enum Size {
@@ -105,9 +106,9 @@ public struct PButton: View {
         self.action = action
     }
     
-    var isGrayIcon: Bool {
+    var isCustomColor: Bool {
         if case .custom(let config) = size {
-            return config.grayIcon
+            return config.customColor
         }
         return false
     }
@@ -130,7 +131,7 @@ public struct PButton: View {
                         icon
                             .resizable()
                             .frame(width: iconSize, height: iconSize)
-                            .if(isGrayIcon) { view in
+                            .if(isCustomColor) { view in
                                 view.foregroundColor(Palette.grayScale6A)
                             }
                         Text(label)
@@ -143,6 +144,20 @@ public struct PButton: View {
                         icon
                             .resizable()
                             .frame(width: iconSize, height: iconSize)
+                            .if(isCustomColor) { view in
+                                view.foregroundColor(Palette.grayScale6A)
+                            }
+                    }
+                case .vertical(let label, let icon):
+                    VStack(spacing: stackSpacing) {
+                        icon
+                            .resizable()
+                            .if(isCustomColor) { view in
+                                EllipticalGradient.main.mask { view }
+                            }
+                            .frame(width: iconSize, height: iconSize)
+                        Text(label)
+                            .font(font)
                     }
                 }
             }
