@@ -59,6 +59,7 @@ public enum Asset {
     static public let moneyIcon = Image("money-icon", bundle: .module)
     static public let gasIcon = Image("gas-icon", bundle: .module)
     static public let bridgeIcon = Image("bridge-icon", bundle: .module)
+    static public let toolIcon = Image("tool", bundle: .module)
 
     //Network icons
     static public let btcIcon = Image("bitcoin-icon", bundle: .module)
