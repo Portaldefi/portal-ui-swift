@@ -11,6 +11,7 @@ public struct PortalButtonStyle: ButtonStyle {
     private let style: PButton.Style
     private let size: PButton.Size
     private let color: Color?
+    private let applyGradient: Bool
     private let enabled: Bool
     
     private var padding: CGFloat {
@@ -36,7 +37,7 @@ public struct PortalButtonStyle: ButtonStyle {
         switch style {
         case .filled:
             return color ?? Palette.grayScale0A
-        case .outline:
+        case .outline, .action:
             return color ?? Palette.grayScaleEA
         case .free:
             if let color = color {
@@ -66,15 +67,33 @@ public struct PortalButtonStyle: ButtonStyle {
         }
     }
     
-    public init(style: PButton.Style, size: PButton.Size, color: Color?, enabled: Bool) {
+    public init(style: PButton.Style, size: PButton.Size, color: Color?, applyGradient: Bool, enabled: Bool) {
         self.style = style
         self.size = size
         self.color = color
+        self.applyGradient = applyGradient
         self.enabled = enabled
     }
         
     public func makeBody(configuration: Self.Configuration) -> some View {
         switch style {
+        case .action:
+            configuration.label
+                .frame(maxWidth: .infinity)
+                .frame(height: height)
+                .font(.Main.fixed(.monoBold, size: fontSize))
+                .background(
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .fill(Palette.grayScale20)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: cornerRadius)
+                                .stroke(Palette.grayScale2A, lineWidth: 2)
+                        )
+                )
+                .opacity(enabled ? 1 : 0.55)
+                .foregroundColor(foregroundColor)
+                .scaleEffect(configuration.isPressed ? 0.96 : 1.0)
+                .opacity(configuration.isPressed ? 0.7 : 1.0)
         case .filled:
             configuration.label
                 .frame(maxWidth: .infinity)
@@ -94,14 +113,18 @@ public struct PortalButtonStyle: ButtonStyle {
                 .frame(maxWidth: .infinity)
                 .frame(height: height)
                 .font(.Main.fixed(.monoBold, size: fontSize))
-                .background(
-                    RoundedRectangle(cornerRadius: cornerRadius)
-                        .fill(Palette.grayScale20)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: cornerRadius)
-                                .stroke(Palette.grayScale2A, lineWidth: 2)
-                        )
-                )
+                .if(enabled, then: {
+                    $0.background(
+                        RoundedRectangle(cornerRadius: cornerRadius)
+                            .if(applyGradient, then: {
+                                $0.stroke(EllipticalGradient.main, lineWidth: 2)
+                            }, else: {
+                                $0.stroke(foregroundColor)
+                            })
+                    )
+                }, else: {
+                    $0.background(Palette.grayScaleEA.opacity(0.2))
+                })
                 .opacity(enabled ? 1 : 0.55)
                 .foregroundColor(foregroundColor)
                 .scaleEffect(configuration.isPressed ? 0.96 : 1.0)

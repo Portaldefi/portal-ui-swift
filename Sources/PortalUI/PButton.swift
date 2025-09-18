@@ -38,7 +38,7 @@ public struct PButton: View {
     private let action: () -> Void
     
     public enum Style {
-        case filled, outline, free
+        case action, filled, outline, free
     }
     
     public enum Config {
@@ -126,6 +126,7 @@ public struct PButton: View {
                     icon
                         .resizable()
                         .frame(width: iconSize, height: iconSize)
+                        .applyGradientMask(applyGradient, enabled: enabled)
                 case .labelAndIconLeft(let label, let icon):
                     HStack(spacing: stackSpacing) {
                         icon
@@ -137,6 +138,7 @@ public struct PButton: View {
                         Text(label)
                             .font(font)
                     }
+                    .applyGradientMask(applyGradient, enabled: enabled)
                 case .labelAndIconRight(let label, let icon):
                     HStack(spacing: stackSpacing) {
                         Text(label)
@@ -148,6 +150,7 @@ public struct PButton: View {
                                 view.foregroundColor(Palette.grayScale6A)
                             }
                     }
+                    .applyGradientMask(applyGradient, enabled: enabled)
                 case .vertical(let label, let icon):
                     VStack(spacing: stackSpacing) {
                         icon
@@ -159,11 +162,11 @@ public struct PButton: View {
                         Text(label)
                             .font(font)
                     }
+                    .applyGradientMask(applyGradient, enabled: enabled)
                 }
             }
-            .applyGradientMask(applyGradient, enabled: enabled)
         }
-        .buttonStyle(PortalButtonStyle(style: style, size: size, color: color, enabled: enabled))
+        .buttonStyle(PortalButtonStyle(style: style, size: size, color: color, applyGradient: applyGradient, enabled: enabled))
         .disabled(!enabled)
     }
 }
